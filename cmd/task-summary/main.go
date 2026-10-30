@@ -31,6 +31,23 @@ func countStatus(statuses []string, target string) int {
 	return count
 }
 
+// доп. задание
+func findStatus(statuses []string, target string) int {
+	for i, s := range statuses {
+		if s == target {
+			return i
+		}
+	}
+	return -1
+}
+
+func completionPercent(statuses []string) float64 {
+	if len(statuses) != 0 {
+		return 100 * float64(countStatus(statuses, "done")) / float64(len(statuses))
+	}
+	return 0
+}
+
 func main() {
 	statuses := []string{"new", "in_progress", "done", "done"}
 	// TODO: добавьте ещё один статус new через append.
@@ -50,4 +67,9 @@ func main() {
 	// // проверка
 	// fmt.Println(statusLabel("blocked"))
 	// fmt.Println(countStatus([]string{}, "done"))
+
+	// доп. задание - проверка
+	fmt.Println(findStatus(statuses, "new"))
+	fmt.Println(findStatus(statuses, "blocked"))
+	fmt.Printf("%.f%% выполнено\n", completionPercent(statuses))
 }
